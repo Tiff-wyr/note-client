@@ -10,7 +10,7 @@
 
 <script>
     export default {
-        name: "register",
+      name: "register",
       data(){
           return {
             formData:{
@@ -19,6 +19,9 @@
               password:''
             }
           }
+      },
+      methods:{
+
       }
     }
 </script>
