@@ -3,12 +3,14 @@
       <div class="title">新用户注册</div>
         <el-input class="mt30" v-model="formData.username" placeholder="用户名"></el-input>
         <el-input class="mt30" v-model="formData.email" placeholder="邮箱"></el-input>
-        <el-input class="mt30" v-model="formData.password" placeholder="密码"></el-input>
-      <el-button class="but mt30" type="primary">注册</el-button>
+        <el-input class="mt30" v-model="formData.password" placeholder="密码" type="password"></el-input>
+      <el-button class="but mt30" type="primary" @click="register">注册</el-button>
     </div>
 </template>
 
 <script>
+    import router from "../../router";
+
     export default {
       name: "register",
       data(){
@@ -21,7 +23,19 @@
           }
       },
       methods:{
+        register(){
+          this.$axios.post('/register',this.formData).then(res=>{
+            if(res.code == 200){
+              this.$message.success(res.msg)
+              setTimeout(()=>{
+                router.push('/index')
+              },1000)
+            }else{
+              this.$message.error(res.msg)
+            }
 
+          })
+        }
       }
     }
 </script>

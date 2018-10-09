@@ -6,8 +6,11 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'normalize.css/normalize.css'
+import xhr from './utils/index'
 
 Vue.config.productionTip = false
+Vue.prototype.$axios=xhr
+
 Vue.use(ElementUI)
 /* eslint-disable no-new */
 new Vue({
